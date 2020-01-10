@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Forest</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B2%3C/text%3E%3C/svg%3E" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #0a0f0a; }
+    #app { position: fixed; inset: 0; }
+    #app canvas { display: block; }
+
+    #overlay {
+      position: fixed; inset: 0; z-index: 10;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: radial-gradient(ellipse at 50% 40%, rgba(12, 24, 10, 0.82), rgba(4, 8, 4, 0.94));
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      color: #e8eede;
+      font-family: Georgia, 'Times New Roman', serif;
+      transition: opacity 0.5s ease;
+      text-align: center;
+    }
+    #overlay.hidden { opacity: 0; pointer-events: none; }
+    #overlay h1 {
+      font-size: clamp(2.4rem, 7vw, 4.5rem);
+      letter-spacing: 0.45em; text-indent: 0.45em;
+      font-weight: 400; color: #f2f5e6;
+      text-shadow: 0 2px 24px rgba(180, 220, 120, 0.25);
+    }
+    #overlay p.sub {
+      margin-top: 0.8rem; font-size: 1rem; letter-spacing: 0.25em; text-indent: 0.25em;
+      color: #9fb08a; font-style: italic;
+    }
+    #play {
+      margin-top: 3rem; padding: 0.9rem 3.2rem;
+      font: 1rem Georgia, serif; letter-spacing: 0.2em; text-indent: 0.2em;
+      color: #e8eede; background: rgba(60, 90, 40, 0.25);
+      border: 1px solid rgba(180, 210, 140, 0.45); border-radius: 2px;
+      cursor: pointer; transition: background 0.25s, border-color 0.25s;
+    }
+    #play:hover { background: rgba(90, 130, 55, 0.4); border-color: rgba(210, 235, 170, 0.8); }
+    #play:disabled { opacity: 0.4; cursor: wait; }
+    #loadwrap { margin-top: 2.2rem; width: min(340px, 70vw); }
+    #loadbar { height: 2px; background: rgba(255,255,255,0.12); border-radius: 1px; overflow: hidden; }
+    #loadfill { height: 100%; width: 0%; background: #b8d488; transition: width 0.2s ease; }
+    #loadtext { margin-top: 0.7rem; font-size: 0.78rem; letter-spacing: 0.15em; color: #8a9a76; }
+    #controls {
+      position: absolute; bottom: 2.2rem; left: 0; right: 0;
+      font-size: 0.78rem; letter-spacing: 0.12em; color: #7d8c6b;
+    }
+    #controls span { margin: 0 1.1rem; white-space: nowrap; }
+    kbd {
+      font: 0.75rem monospace; padding: 0.15rem 0.45rem;
+      border: 1px solid rgba(255,255,255,0.25); border-radius: 3px;
+      color: #cdd8ba;
+    }
+
+    #crosshair {
+      position: fixed; left: 50%; top: 50%; z-index: 5;
+      width: 4px; height: 4px; margin: -2px 0 0 -2px;
+      border-radius: 50%; background: rgba(255,255,255,0.55);
+      box-shadow: 0 0 4px rgba(0,0,0,0.5);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    body.playing #crosshair { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="crosshair"></div>
+  <div id="overlay">
+    <h1>THE FOREST</h1>
+    <p class="sub">un paseo por el bosque</p>
+    <button id="play" type="button" disabled>GENERANDO&hellip;</button>
+    <div id="loadwrap">
+      <div id="loadbar"><div id="loadfill"></div></div>
+      <div id="loadtext">Iniciando&hellip;</div>
+    </div>
+    <div id="controls">
+      <span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> moverse</span>
+      <span><kbd>Shift</kbd> correr</span>
+      <span><kbd>Espacio</kbd> saltar</span>
+      <span><kbd>Esc</kbd> men&uacute;</span>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
