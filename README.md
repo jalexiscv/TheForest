@@ -6,6 +6,10 @@ Construido desde cero con **WebGL 2 + Three.js + TypeScript**, sin motor de jueg
 
 > Camina por una pradera de pasto alto mecido por el viento, sigue el sendero pedregoso que serpentea ladera arriba entre árboles, cruza el anillo de cristales de la cumbre y encara la efigie del Marcador, cuyos glifos laten en rojo… bajo la mirada de un dron que bajará a inspeccionarte.
 
+## 🕹️ Demo en vivo
+
+**Juega ahora mismo en tu navegador:** 👉 **https://jalexiscv.github.io/TheForest/**
+
 ---
 
 ## 📸 Capturas
