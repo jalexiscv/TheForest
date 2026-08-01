@@ -47,10 +47,21 @@
     #loadfill { height: 100%; width: 0%; background: #b8d488; transition: width 0.2s ease; }
     #loadtext { margin-top: 0.7rem; font-size: 0.78rem; letter-spacing: 0.15em; color: #8a9a76; }
     #controls {
-      position: absolute; bottom: 2.2rem; left: 0; right: 0;
+      position: absolute; bottom: 2.8rem; left: 0; right: 0;
       font-size: 0.78rem; letter-spacing: 0.12em; color: #7d8c6b;
     }
     #controls span { margin: 0 1.1rem; white-space: nowrap; }
+    #credits {
+      position: absolute; bottom: 0.9rem; left: 0; right: 0;
+      font-size: 0.72rem; letter-spacing: 0.14em; font-style: italic;
+      color: #6b7a5c;
+    }
+    #credits a {
+      color: #9fb08a; text-decoration: none;
+      border-bottom: 1px solid rgba(159, 176, 138, 0.35);
+      transition: color 0.25s, border-color 0.25s;
+    }
+    #credits a:hover { color: #cdd8ba; border-color: rgba(205, 216, 186, 0.6); }
     kbd {
       font: 0.75rem monospace; padding: 0.15rem 0.45rem;
       border: 1px solid rgba(255,255,255,0.25); border-radius: 3px;
@@ -83,6 +94,9 @@
       <span><kbd>Shift</kbd> correr</span>
       <span><kbd>Espacio</kbd> saltar</span>
       <span><kbd>Esc</kbd> men&uacute;</span>
+    </div>
+    <div id="credits">
+      Creado por <a href="https://github.com/jalexiscv" target="_blank" rel="noopener">Jose Alexis Correa Valencia</a> &middot; @jalexiscv &middot; Colombia
     </div>
   </div>
   <script type="module" src="/src/main.ts"></script>
